@@ -1,0 +1,22 @@
+﻿@* @{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="container text-center mt-5">
+    <h1>Welcome to Online Vehicle Servicing</h1>
+    <p>Select an option to continue:</p>
+
+    <div class="d-flex justify-content-center mt-4">
+        <a class="btn btn-primary me-3" asp-controller="Insert" asp-action="Index_Pageload">Register</a>
+        <a class="btn btn-success" asp-controller="Login" asp-action="Login_Pageload">Login</a>
+    </div>
+</div>
+

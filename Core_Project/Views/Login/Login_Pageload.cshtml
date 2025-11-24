@@ -1,0 +1,56 @@
+﻿@model Core_Project.Models.LoginCls;
+
+<style>
+    .login-container {
+        width: 350px;
+        margin: 80px auto;
+        padding: 25px;
+        border-radius: 10px;
+        background-color: #f7f7f7;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .btn-login {
+        width: 100%;
+    }
+</style>
+<div class="login-container">
+    <h2>Login</h2>
+<form asp-action="Login_click" class="form-horizontal" method="post">
+    <div class="form-group">
+        <label class="control-label">Username</label>
+        <input asp-for="uname" class="form-control" id="t1" style="width:150px;" />
+    </div>
+    <div class="form-group mt-3">
+        <label class="control-label">Password</label>
+        <input asp-for="pass" class="form-control" id="t2" style="width:150px;"/>
+    </div>
+    <br>
+    <div class="form-group mt-4">
+       @*  <input type="submit" value="Login" class="btn btn-success" /> *@
+            <button type="submit" class="btn btn-primary btn-login">Login</button>
+    </div>
+</form>
+</div>
+@{
+    if(@TempData["msg"]!=null)
+    {
+        <script>
+            alert('@TempData["msg"]');
+            document.getElementById('t1').value="";
+            document.getElementById('t2').value="";
+        </script>
+        
+    }
+
+}

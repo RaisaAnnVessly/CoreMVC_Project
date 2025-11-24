@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Core_Project.Models.ServiceCls>
+
+<table class="table table-striped table-hover table-bordered shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Booking Date</th>
+            <th>Vehicle Number</th>
+            <th>Vehicle Model</th>
+            <th>Service Type</th>
+            <th>Preferred Date</th>
+            <th>Documents</th>
+            <th>Mechanic Name</th>
+            <th>Service Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.bookingdate</td>
+                <td>@s.vehicleno</td>
+                <td>@s.vehiclemodel</td>
+                <td>@s.servicetype</td>
+                <td>@s.preferredDate.ToString("dd/MM/yyyy")</td>
+                <td><a href="@s.documents" target="_blank" class="btn btn-link">View</a></td>
+
+                <td>
+                    @if (string.IsNullOrEmpty(s.mechanicname) || s.mechanicname == "Not Assigned")
+                    {
+                        <button class="btn btn-primary btn-sm"
+                                onclick="showDropDown('@s.bid')">
+                            Assign Mechanic
+                        </button>
+
+                        <div id="drop_@s.bid" style="display:none; margin-top:5px;">
+                            <form method="post" asp-action="AssignMechanic" asp-controller="AdminProfile">
+                                <input type="hidden" name="bid" value="@s.bid" />
+
+                                <select name="mid" class="form-control" style="width:150px; display:inline-block;">
+                                    <option value="">-- Select --</option>
+                                    @foreach (var m in ViewBag.Mechanics)
+                                    {
+                                        <option value="@m.id">@m.name</option>
+                                    }
+                                </select>
+
+                                <button type="submit" class="btn btn-success btn-sm">Save</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        @s.mechanicname
+                    }
+                </td>
+                <td>
+                    @if (s.status == "In Progress")
+                    {
+                        <form method="post" asp-action="UpdateStatus" asp-controller="AdminProfile">
+                            <input type="hidden" name="bookid" value="@s.bid" />
+                            <button type="submit" class="btn btn-success btn-sm">
+                                Mark as Completed
+                            </button>
+                        </form>
+                    }
+                    else if (s.status == "Completed")
+                    {
+                        <span class="badge bg-success">Completed</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">@s.status</span>
+                    }
+                </td>
+            </tr>    
+        }
+    </tbody>
+</table>
+<form asp-controller="AdminProfile" asp-action="AdminProfile_Pageload" method="get">
+    <button type="submit" class="btn btn-primary">Go Back</button>
+</form>
+
+<script>
+    function showDropDown(id) {
+        let div = document.getElementById("drop_" + id);
+        if (div) {
+            div.style.display = "block";
+        }
+    }
+</script>
+
+

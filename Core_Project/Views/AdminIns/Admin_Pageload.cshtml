@@ -1,0 +1,42 @@
+﻿@model Core_Project.Models.AdminCls;
+
+<form asp-action="Admin_click" class="form-horizontal" method="post">
+    <div class="form-group">
+        <label class="control-label">Name</label>
+        <input asp-for="name" class="form-control" id="t1" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Email</label>
+        <input asp-for="email" class="form-control" id="t2" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Phone</label>
+        <input asp-for="phone" class="form-control" id="t3" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Username</label>
+        <input asp-for="username" class="form-control" id="t4" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Password</label>
+        <input asp-for="password" class="form-control" id="t5" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Insert" class="btn btn-success" />
+    </div>
+</form>
+@{
+    if (@TempData["msg"] != null)
+    {
+        <script>
+            alert('@TempData["msg"]');
+            document.getElementById('t1').value="";
+            document.getElementById('t2').value="";
+            document.getElementById('t3').value="";
+            document.getElementById('t4').value="";
+            document.getElementById('t5').value="";
+        </script>
+
+    }
+
+}

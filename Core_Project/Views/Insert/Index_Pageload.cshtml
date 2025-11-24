@@ -1,0 +1,104 @@
+﻿@model Core_Project.Models.InsertCls;
+
+<style>
+    .form-container {
+        width: 350px;
+        margin: 80px auto;
+        padding: 25px;
+        border-radius: 10px;
+        background-color: #f7f7f7;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .btn-login {
+        width: 100%;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #555;
+    }
+</style>
+<form asp-action="Index_click" class="form-horizontal" method="post">
+    <div class="form-container">
+        <h2>REGISTER</h2>
+        <div class="form-group">
+            <label class="control-label">Name</label>
+            <input asp-for="uname" class="form-control" id="t1" style="width:150px;" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Email</label>
+            <input asp-for="uemail" class="form-control" id="t2" style="width:150px;" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Phone</label>
+            <input asp-for="uphone" class="form-control" id="t3" style="width:150px;" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Address</label>
+            <input asp-for="uaddr" class="form-control" id="t4" style="width:150px;" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Username</label>
+            <input asp-for="username" class="form-control" id="t5" style="width:150px;" />
+        </div>
+        <div class="form-group position-relative">
+            <label class="control-label">Password</label>
+            <input asp-for="password" type="password" class="form-control" id="t6" style="width:150px;" />
+            <span class="toggle-password" onclick="togglePassword()">
+                <i id="eyeIcon" class="fas fa-eye"></i>
+            </span>
+        </div>
+        <div class="form-group">
+            @* <input type="submit" value="Insert" class="btn btn-success" /> *@
+            <button type="submit" class="btn btn-primary btn-insert">Register</button>
+        </div>
+    </div>
+</form>
+@{
+    if(@TempData["msg"]!=null)
+    {
+        <script>
+            alert('@TempData["msg"]');
+            document.getElementById('t1').value="";
+            document.getElementById('t2').value="";
+            document.getElementById('t3').value="";
+            document.getElementById('t4').value="";
+            document.getElementById('t5').value="";
+            document.getElementById('t6').value="";
+        </script>
+        
+    }
+    <script>
+            function togglePassword() {
+            var passwordInput = document.getElementById("t6");
+            var eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+
+    </script>
+
+}

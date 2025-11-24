@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Core_Project.Models.ServiceCls>
+@* <h1>User Home</h1> *@
+
+<h1 class="mt-4 mb-4 text-center fw-bold">User Home</h1>
+<button class="btn btn-primary btn-sm px-3"
+        onclick="location.href='@Url.Action("AddService_click", "UserProfile")'">
+    + Book a Service
+</button>
+
+@* <button onclick="location.href='@Url.Action("AddService_click", "UserProfile")'">
+    Service Booking
+</button> *@
+<table class="table table-striped table-hover table-bordered shadow-sm">
+    <thead class="table-dark">
+            <tr>
+                <th>Booking Date</th>
+                <th>Vehicle Number</th>
+                <th>Vehicle Model</th>
+                <th>Service Type</th>
+                <th>Preferred Date</th>
+                <th>Documents</th>
+                <th>Service Status</th>
+                <th>Mechanic Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+            <tr>            
+                <td>@s.bookingdate</td>
+                <td>@s.vehicleno</td>
+                <td>@s.vehiclemodel</td>
+                <td>@s.servicetype</td>
+                <td>@s.preferredDate.ToString("dd/MM/yyyy")</td>
+                <td><a href="@s.documents" target="_blank" class="btn btn-link">View</a></td>
+                @* <td>@s.status</td> *@
+               @*  <td>@s.mechanicname</td> *@
+                <td>
+                    @if (s.status == "Pending")
+                    {
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    }
+                    else if (s.status == "In Progress")
+                    {
+                        <span class="badge bg-success">In Progress</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">Completed</span>
+                    }
+                </td>
+                <td>
+                    @if (s.mechanicname == "Not Assigned")
+                    {
+                        <span class="text-muted">@s.mechanicname</span>
+                    }
+                    else
+                    {
+                        <span class="fw-semibold">@s.mechanicname</span>
+                    }
+                </td>
+            </tr>
+            }                          
+        </tbody>      
+</table>
+
+
+
+
+
+
+
+
+
+
