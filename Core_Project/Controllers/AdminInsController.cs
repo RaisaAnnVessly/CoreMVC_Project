@@ -31,7 +31,7 @@ namespace Core_Project.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return View("Index");
+            return RedirectToAction("Index","Home");
         }
     }
 }

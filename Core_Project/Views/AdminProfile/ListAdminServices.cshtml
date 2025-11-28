@@ -2,6 +2,8 @@
 <table class="table table-striped table-hover table-bordered shadow-sm">
     <thead class="table-dark">
         <tr>
+            <th>Booking Id</th>
+            <th>User</th>
             <th>Booking Date</th>
             <th>Vehicle Number</th>
             <th>Vehicle Model</th>
@@ -16,6 +18,8 @@
         @foreach (var s in Model)
         {
             <tr>
+                <td>@s.bid</td>
+                <td>@s.uname</td>
                 <td>@s.bookingdate</td>
                 <td>@s.vehicleno</td>
                 <td>@s.vehiclemodel</td>
