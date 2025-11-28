@@ -397,6 +397,35 @@ namespace Core_Project.Models
                 throw;
             }
         }
+        public bool CheckAdminExists()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_AdminExists",con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                int i=Convert.ToInt32(cmd.ExecuteScalar());
+                con.Close();
+                if (i==1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }         
+            }
+            catch(Exception)
+            {
+                {
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    throw;
+                }
+            }
+        }
     }
 }
 

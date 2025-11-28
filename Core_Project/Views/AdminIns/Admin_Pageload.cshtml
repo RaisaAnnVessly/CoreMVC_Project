@@ -3,23 +3,31 @@
 <form asp-action="Admin_click" class="form-horizontal" method="post">
     <div class="form-group">
         <label class="control-label">Name</label>
-        <input asp-for="name" class="form-control" id="t1" />
+        <input asp-for="name" class="form-control" id="t1" style="width:150px;  />
     </div>
     <div class="form-group">
         <label class="control-label">Email</label>
-        <input asp-for="email" class="form-control" id="t2" />
+        <input asp-for="email" class="form-control" id="t2" style="width:150px;  />
     </div>
     <div class="form-group">
         <label class="control-label">Phone</label>
-        <input asp-for="phone" class="form-control" id="t3" />
+        <input asp-for="phone" class="form-control" id="t3" style="width:150px;  />
     </div>
     <div class="form-group">
         <label class="control-label">Username</label>
-        <input asp-for="username" class="form-control" id="t4" />
+        <input asp-for="username" class="form-control" id="t4" style="width:150px;  />
     </div>
-    <div class="form-group">
+    <div class="form-group position-relative">
         <label class="control-label">Password</label>
-        <input asp-for="password" class="form-control" id="t5" />
+        <input asp-for="password" type="password" class="form-control" id="t5" style="width:150px;" /> 
+    @* <span class="toggle-password" onclick="togglePassword()">
+        <i id="eyeIcon" class="fas fa-eye"></i>
+    </span> *@
+        <span class="toggle-password"
+              onclick="togglePassword()"
+              style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer;">
+            <i id="eyeIcon" class="fas fa-eye"></i>
+        </span>
     </div>
     <div class="form-group">
         <input type="submit" value="Insert" class="btn btn-success" />
@@ -38,5 +46,21 @@
         </script>
 
     }
+    <script>
+            function togglePassword() {
+            var passwordInput = document.getElementById("t5");
+            var eyeIcon = document.getElementById("eyeIcon");
 
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+
+    </script>
 }

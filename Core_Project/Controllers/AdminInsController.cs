@@ -8,6 +8,13 @@ namespace Core_Project.Controllers
         ProjDB obj = new ProjDB();
         public IActionResult Admin_Pageload()
         {
+            bool adminExists = obj.CheckAdminExists();
+
+            if (adminExists)
+            {
+                return RedirectToAction("Login_Pageload", "Login");
+            }
+
             return View();
         }
         public IActionResult Admin_click(AdminCls clsobj)

@@ -31,9 +31,17 @@
         <label class="control-label">Username</label>
         <input asp-for="uname" class="form-control" id="t1" style="width:150px;" />
     </div>
-    <div class="form-group mt-3">
+        <div class="form-group position-relative">
         <label class="control-label">Password</label>
-        <input asp-for="pass" class="form-control" id="t2" style="width:150px;"/>
+        <input asp-for="pass" type="password" class="form-control" id="t2" style="width:150px;"/>
+           @*  <span class="toggle-password" onclick="togglePassword()">
+                <i id="eyeIcon" class="fas fa-eye"></i>
+            </span> *@
+            <span class="toggle-password"
+                  onclick="togglePassword()"
+                  style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer;">
+                <i id="eyeIcon" class="fas fa-eye"></i>
+            </span>
     </div>
     <br>
     <div class="form-group mt-4">
@@ -52,5 +60,22 @@
         </script>
         
     }
+    <script>
+            function togglePassword() {
+            var passwordInput = document.getElementById("t2");
+            var eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+
+    </script>
 
 }

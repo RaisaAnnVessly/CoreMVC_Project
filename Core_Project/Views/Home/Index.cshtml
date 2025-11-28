@@ -15,7 +15,15 @@
     <p>Select an option to continue:</p>
 
     <div class="d-flex justify-content-center mt-4">
-        <a class="btn btn-primary me-3" asp-controller="Insert" asp-action="Index_Pageload">Register</a>
+        <!-- User Registration -->
+        <a class="btn btn-primary me-3" asp-controller="Insert" asp-action="Index_Pageload">
+            User Register
+        </a>
+
+        <!-- Admin Registration -->
+        <a class="btn btn-warning me-3" asp-controller="AdminIns" asp-action="Admin_Pageload">
+            Admin Register
+        </a>
         <a class="btn btn-success" asp-controller="Login" asp-action="Login_Pageload">Login</a>
     </div>
 </div>
