@@ -20,7 +20,7 @@
         width: 100%;
     }
 
-    .btn-login {
+    .btn-insert {
         width: 100%;
     }
 
@@ -59,7 +59,9 @@
         <div class="form-group position-relative">
             <label class="control-label">Password</label>
             <input asp-for="password" type="password" class="form-control" id="t6" style="width:150px;" />
-            <span class="toggle-password" onclick="togglePassword()">
+            <span class="toggle-password"
+                  onclick="togglePassword()"
+                  style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer;">
                 <i id="eyeIcon" class="fas fa-eye"></i>
             </span>
         </div>

@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Core_Project.Models.ServiceCls>
-
 <table class="table table-striped table-hover table-bordered shadow-sm">
     <thead class="table-dark">
         <tr>
@@ -23,7 +22,6 @@
                 <td>@s.servicetype</td>
                 <td>@s.preferredDate.ToString("dd/MM/yyyy")</td>
                 <td><a href="@s.documents" target="_blank" class="btn btn-link">View</a></td>
-
                 <td>
                     @if (string.IsNullOrEmpty(s.mechanicname) || s.mechanicname == "Not Assigned")
                     {
